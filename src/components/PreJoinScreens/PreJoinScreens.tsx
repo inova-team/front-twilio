@@ -1,9 +1,9 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect/*, FormEvent*/ } from 'react';
 import DeviceSelectionScreen from './DeviceSelectionScreen/DeviceSelectionScreen';
 import IntroContainer from '../IntroContainer/IntroContainer';
 import MediaErrorSnackbar from './MediaErrorSnackbar/MediaErrorSnackbar';
 import PreflightTest from './PreflightTest/PreflightTest';
-import RoomNameScreen from './RoomNameScreen/RoomNameScreen';
+// import RoomNameScreen from './RoomNameScreen/RoomNameScreen';
 import { useAppState } from '../../state';
 import { useParams } from 'react-router-dom';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
@@ -23,6 +23,7 @@ export default function PreJoinScreens() {
 
   const [name, setName] = useState<string>(user?.displayName || '');
   const [roomName, setRoomName] = useState<string>('');
+  const [userTkn, setUserTkn] = useState<string>('');
 
   const [mediaError, setMediaError] = useState<Error>();
 
@@ -40,11 +41,11 @@ export default function PreJoinScreens() {
 
     // Ahora desde el URL
     const variablesURL = new URLSearchParams(window.location.search);
-    if (variablesURL.has('sala') && variablesURL.has('nombre')) {
-      const sala = variablesURL.get('sala')!.toString();
+    if (variablesURL.has('nombre') && variablesURL.has('pwd')) {
       const nombre = variablesURL.get('nombre')!.toString();
-      setRoomName(sala);
+      const pwd = variablesURL.get('pwd')!.toString();
       setName(nombre);
+      setUserTkn(pwd);
       setStep(Steps.deviceSelectionStep);
     }
   }, [user, URLRoomName, URLUsername]);
@@ -59,14 +60,14 @@ export default function PreJoinScreens() {
     }
   }, [getAudioAndVideoTracks, step, mediaError]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // If this app is deployed as a twilio function, don't change the URL because routing isn't supported.
-    if (!window.location.origin.includes('twil.io')) {
-      window.history.replaceState(null, '', window.encodeURI(`/room/${roomName}${window.location.search || ''}`));
-    }
-    setStep(Steps.deviceSelectionStep);
-  };
+  // const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   // If this app is deployed as a twilio function, don't change the URL because routing isn't supported.
+  //   if (!window.location.origin.includes('twil.io')) {
+  //     window.history.replaceState(null, '', window.encodeURI(`/room/${roomName}${window.location.search || ''}`));
+  //   }
+  //   setStep(Steps.deviceSelectionStep);
+  // };
 
   const SubContent = (
     <>
@@ -77,7 +78,7 @@ export default function PreJoinScreens() {
 
   return (
     <IntroContainer subContent={step === Steps.deviceSelectionStep && SubContent}>
-      {step === Steps.roomNameStep && (
+      {/*{step === Steps.roomNameStep && (
         <RoomNameScreen
           name={name}
           roomName={roomName}
@@ -87,9 +88,10 @@ export default function PreJoinScreens() {
         />
       )}
 
-      {step === Steps.deviceSelectionStep && (
-        <DeviceSelectionScreen name={name} roomName={roomName} setStep={setStep} />
-      )}
+      {step === Steps.deviceSelectionStep && (*/}
+        <DeviceSelectionScreen name={name} roomName={roomName} setName={setName} setRoomName={setRoomName} usrTkn={userTkn} setStep={setStep} />
+
+      {/*)}*/}
     </IntroContainer>
   );
 }
