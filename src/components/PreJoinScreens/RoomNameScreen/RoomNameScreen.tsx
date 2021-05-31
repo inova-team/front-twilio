@@ -1,31 +1,29 @@
-import React, { ChangeEvent, FormEvent } from 'react';
-import { Typography, makeStyles, TextField, Grid, Button, InputLabel, Theme } from '@material-ui/core';
-import { useAppState } from '../../../state';
+import React, { FormEvent } from 'react';
 
-const useStyles = makeStyles((theme: Theme) => ({
-  gutterBottom: {
-    marginBottom: '1em',
-  },
-  inputContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '1.5em 0 3.5em',
-    '& div:not(:last-child)': {
-      marginRight: '1em',
-    },
-    [theme.breakpoints.down('sm')]: {
-      margin: '1.5em 0 2em',
-    },
-  },
-  textFieldContainer: {
-    width: '100%',
-  },
-  continueButton: {
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-    },
-  },
-}));
+// const useStyles = makeStyles((theme: Theme) => ({
+//   gutterBottom: {
+//     marginBottom: '1em',
+//   },
+//   inputContainer: {
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//     margin: '1.5em 0 3.5em',
+//     '& div:not(:last-child)': {
+//       marginRight: '1em',
+//     },
+//     [theme.breakpoints.down('sm')]: {
+//       margin: '1.5em 0 2em',
+//     },
+//   },
+//   textFieldContainer: {
+//     width: '100%',
+//   },
+//   continueButton: {
+//     [theme.breakpoints.down('sm')]: {
+//       width: '100%',
+//     },
+//   },
+// }));
 
 interface RoomNameScreenProps {
   name: string;
@@ -35,23 +33,23 @@ interface RoomNameScreenProps {
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-export default function RoomNameScreen({ name, roomName, setName, setRoomName, handleSubmit }: RoomNameScreenProps) {
-  const classes = useStyles();
-  const { user } = useAppState();
+export default function RoomNameScreen({ }: RoomNameScreenProps) {
+  // const classes = useStyles();
+  // const { user } = useAppState();
 
-  const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-
-  const handleRoomNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setRoomName(event.target.value);
-  };
-
-  const hasUsername = !window.location.search.includes('customIdentity=true') && user?.displayName;
+  // const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setName(event.target.value);
+  // };
+  //
+  // const handleRoomNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setRoomName(event.target.value);
+  // };
+  //
+  // const hasUsername = !window.location.search.includes('customIdentity=true') && user?.displayName;
 
   return (
     <>
-      <Typography variant="h5" className={classes.gutterBottom}>
+      {/*<Typography variant="h5" className={classes.gutterBottom}>
         Ingresar
       </Typography>
       <Typography variant="body1">
@@ -102,7 +100,7 @@ export default function RoomNameScreen({ name, roomName, setName, setRoomName, h
             Ingresar
           </Button>
         </Grid>
-      </form>
+      </form>*/}
     </>
   );
 }
