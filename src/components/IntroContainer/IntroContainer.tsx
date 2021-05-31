@@ -114,7 +114,7 @@ const IntroContainer = (props: IntroContainerProps) => {
             <div className={classes.logoContainer}>
               <VideoLogo />
               <Typography variant="h6" className={classes.title}>
-                InnoTIC Webconference
+                Videoconferencia Tinkku
               </Typography>
             </div>
           </div>
