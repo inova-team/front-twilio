@@ -253,3 +253,13 @@ See [.env.example](.env.example) for an explanation of the environment variables
 ## License
 
 See the [LICENSE](LICENSE) file for details.
+
+## CONFIG
+
+en .env:
+### produccion
+- REACT_APP_TOKEN_ENDPOINT=https://<-domain->/call/token
+- REACT_APP_DISCONNECT_PATH=https://<-domain->/call/disconnect
+### desarrollo
+- REACT_APP_TOKEN_ENDPOINT=http://localhost:8000/call/token
+- REACT_APP_DISCONNECT_PATH=http://localhost:8000/call/disconnect
