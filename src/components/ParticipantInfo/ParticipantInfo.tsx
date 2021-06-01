@@ -191,7 +191,7 @@ export default function ParticipantInfo({
             <AudioLevelIndicator audioTrack={audioTrack} />
             <Typography variant="body1" className={classes.typeography} component="span">
               {participant.identity}
-              {isLocalParticipant && ' (You)'}
+              {isLocalParticipant && ' (Tú)'}
             </Typography>
           </span>
         </div>

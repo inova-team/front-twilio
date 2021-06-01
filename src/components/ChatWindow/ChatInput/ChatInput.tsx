@@ -131,7 +131,7 @@ export default function ChatInput({ conversation, isChatWindowOpen }: ChatInputP
         rowsMax={3}
         className={classes.textArea}
         aria-label="chat input"
-        placeholder="Write a message..."
+        placeholder="Escribe un mensaje..."
         onKeyPress={handleReturnKeyPress}
         onChange={handleChange}
         value={messageBody}

@@ -51,7 +51,7 @@ export default function DeviceSelectionDialog({ open, onClose }: { open: boolean
 
   return (
     <Dialog open={open} onClose={onClose} classes={{ paper: classes.paper }}>
-      <DialogTitle>Audio and Video Settings</DialogTitle>
+      <DialogTitle>Configuración de Audio y Video</DialogTitle>
       <Divider />
       <DialogContent className={classes.container}>
         <div className={classes.listSection}>
@@ -74,7 +74,7 @@ export default function DeviceSelectionDialog({ open, onClose }: { open: boolean
       <Divider />
       <DialogActions>
         <Button color="primary" variant="contained" className={classes.button} onClick={onClose}>
-          Done
+          Listo
         </Button>
       </DialogActions>
     </Dialog>

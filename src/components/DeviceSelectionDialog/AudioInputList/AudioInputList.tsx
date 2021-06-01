@@ -23,7 +23,7 @@ export default function AudioInputList() {
   return (
     <div>
       <Typography variant="subtitle2" gutterBottom>
-        Audio Input
+        Entrada de Audio
       </Typography>
       <Grid container alignItems="center" justify="space-between">
         <div className="inputSelect">
@@ -42,7 +42,7 @@ export default function AudioInputList() {
               </Select>
             </FormControl>
           ) : (
-            <Typography>{localAudioTrack?.mediaStreamTrack.label || 'No Local Audio'}</Typography>
+            <Typography>{localAudioTrack?.mediaStreamTrack.label || 'Sin Audio Local'}</Typography>
           )}
         </div>
         <AudioLevelIndicator audioTrack={localAudioTrack} color="black" />

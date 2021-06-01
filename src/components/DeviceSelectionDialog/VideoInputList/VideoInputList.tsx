@@ -69,9 +69,9 @@ export default function VideoInputList() {
       ) : (
         <>
           <Typography variant="subtitle2" gutterBottom>
-            Video Input
+            Entrada de Video
           </Typography>
-          <Typography>{localVideoTrack?.mediaStreamTrack.label || 'No Local Video'}</Typography>
+          <Typography>{localVideoTrack?.mediaStreamTrack.label || 'Sin Video Local'}</Typography>
         </>
       )}
     </div>

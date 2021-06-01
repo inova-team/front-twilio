@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
 import ScreenShareIcon from '../../../icons/ScreenShareIcon';
@@ -8,12 +8,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import useScreenShareParticipant from '../../../hooks/useScreenShareParticipant/useScreenShareParticipant';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 
-export const SCREEN_SHARE_TEXT = 'Share Screen';
-export const STOP_SCREEN_SHARE_TEXT = 'Stop Sharing Screen';
-export const SHARE_IN_PROGRESS_TEXT = 'Cannot share screen when another user is sharing';
-export const SHARE_NOT_SUPPORTED_TEXT = 'Screen sharing is not supported with this browser';
+export const SCREEN_SHARE_TEXT = 'Compartir Pantalla';
+export const STOP_SCREEN_SHARE_TEXT = 'Dejar de compartir';
+export const SHARE_IN_PROGRESS_TEXT = 'No puede compartir pantalla mientras otro usuario está transmitiendo';
+export const SHARE_NOT_SUPPORTED_TEXT = 'Compartir Pantalla no está disponible en este dispositivo';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     button: {
       '&[disabled]': {

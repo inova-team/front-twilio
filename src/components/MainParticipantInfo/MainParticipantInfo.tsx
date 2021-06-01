@@ -111,8 +111,8 @@ export default function MainParticipantInfo({ participant, children }: MainParti
           <AudioLevelIndicator audioTrack={audioTrack} />
           <Typography variant="body1" color="inherit">
             {participant.identity}
-            {isLocal && ' (You)'}
-            {screenSharePublication && ' - Screen'}
+            {isLocal && ' (Tú)'}
+            {screenSharePublication && ' - Pantalla'}
           </Typography>
         </div>
       </div>

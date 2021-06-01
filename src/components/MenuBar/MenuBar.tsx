@@ -73,8 +73,8 @@ export default function MenuBar() {
     <>
       {isSharingScreen && (
         <Grid container justify="center" alignItems="center" className={classes.screenShareBanner}>
-          <Typography variant="h6">You are sharing your screen</Typography>
-          <Button onClick={() => toggleScreenShare()}>Stop Sharing</Button>
+          <Typography variant="h6">Estás compartiendo pantalla</Typography>
+          <Button onClick={() => toggleScreenShare()}>Dejar de compartir</Button>
         </Grid>
       )}
       <footer className={classes.container}>
