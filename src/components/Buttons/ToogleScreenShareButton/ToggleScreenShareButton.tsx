@@ -10,7 +10,7 @@ import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 
 export const SCREEN_SHARE_TEXT = 'Compartir Pantalla';
 export const STOP_SCREEN_SHARE_TEXT = 'Dejar de compartir';
-export const SHARE_IN_PROGRESS_TEXT = 'No puede compartir pantalla mientras otro usuario está transmitiendo';
+export const SHARE_IN_PROGRESS_TEXT = 'No puede compartir pantalla mientras otro usuario está compartiendo';
 export const SHARE_NOT_SUPPORTED_TEXT = 'Compartir Pantalla no está disponible en este dispositivo';
 
 const useStyles = makeStyles(() =>
