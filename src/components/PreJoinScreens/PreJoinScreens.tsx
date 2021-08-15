@@ -47,6 +47,10 @@ export default function PreJoinScreens() {
       setName(nombre);
       setUserTkn(pwd);
       setStep(Steps.deviceSelectionStep);
+      let logo = document.querySelector('.main-page-logo');
+      if (logo){
+        logo.setAttribute('href', process.env.REACT_APP_MAIN_PAGE_PATH || '#')
+      }
     }
   }, [user, URLRoomName, URLUsername]);
 
