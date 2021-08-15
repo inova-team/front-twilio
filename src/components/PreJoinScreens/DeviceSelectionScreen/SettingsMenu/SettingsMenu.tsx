@@ -38,7 +38,7 @@ export default function SettingsMenu({mobileButtonClass}: { mobileButtonClass?: 
           startIcon={<MoreIcon/>}
           className={mobileButtonClass}
         >
-          More
+          Más
         </Button>
       ) : (
         <Button
