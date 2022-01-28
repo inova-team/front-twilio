@@ -78,62 +78,59 @@ export default function DeviceSelectionScreen({
   const disableButtons = isFetching || isAcquiringLocalTracks || isConnecting;
 
   const handleJoin = () => {
-    getToken(name, roomName, usrTkn).then(async res => {
-      console.log(res)
+    getToken(name, roomName, usrTkn).then(async json => {
+      console.log(json)
 
-      const json = await res.json();
-      if (res.ok) {
-        let token = json.token
-        setName(json.name)
-        setRoomName(json.room_name)
-        // let endpoint = process.env.REACT_APP_DISCONNECT_PATH || ''
-        let endpoint = 'https://tinkkuweb.uc.r.appspot.com/llamadas/disconnect' || ''
 
-        if (json.client === 'paciente') {
-          var current_sec = json.seconds
+      let token = json.token
+      setName(json.name)
+      setRoomName(json.room_name)
+      // let endpoint = process.env.REACT_APP_DISCONNECT_PATH || ''
+      let endpoint = 'https://tinkkuweb.uc.r.appspot.com/llamadas/disconnect' || ''
 
-          window.setTimeout(function () {
-            var formData = new FormData()
-            formData.append('room_sid', json.room_sid);
-            navigator.sendBeacon(endpoint, formData)
-          }, json.seconds * 1000);
+      if (json.client === 'paciente') {
+        var current_sec = json.seconds
 
-          var interval = window.setInterval(function () {
-            function padZero(n: number) {
-              if (n < 10) {
-                return '0'.concat(n.toString());
-              } else {
-                return n.toString();
-              }
+        window.setTimeout(function () {
+          var formData = new FormData()
+          formData.append('room_sid', json.room_sid);
+          navigator.sendBeacon(endpoint, formData)
+        }, json.seconds * 1000);
+
+        var interval = window.setInterval(function () {
+          function padZero(n: number) {
+            if (n < 10) {
+              return '0'.concat(n.toString());
+            } else {
+              return n.toString();
             }
+          }
 
-            function setTimer(seconds: number, timer: Element) {
-              (timer as HTMLElement).dataset.seconds = seconds.toString();
-              var h = Math.floor(seconds / 3600);
-              var m = Math.floor(seconds % 3600 / 60);
-              var s = seconds % 60;
-              (timer as HTMLElement).innerHTML = '('.concat(padZero(h), ':', padZero(m), ':', padZero(s), ')');
-            }
-            // console.log(current_sec)
-            if (current_sec === 0) {
-              clearInterval(interval);
-            }
-            var timers = document.querySelectorAll('.timer');
-            timers.forEach(function (timer) {
-              setTimer(current_sec, timer)
-            });
-            current_sec = current_sec - 1;
-          }, 1000);
+          function setTimer(seconds: number, timer: Element) {
+            (timer as HTMLElement).dataset.seconds = seconds.toString();
+            var h = Math.floor(seconds / 3600);
+            var m = Math.floor(seconds % 3600 / 60);
+            var s = seconds % 60;
+            (timer as HTMLElement).innerHTML = '('.concat(padZero(h), ':', padZero(m), ':', padZero(s), ')');
+          }
 
-        }
+          // console.log(current_sec)
+          if (current_sec === 0) {
+            clearInterval(interval);
+          }
+          var timers = document.querySelectorAll('.timer');
+          timers.forEach(function (timer) {
+            setTimer(current_sec, timer)
+          });
+          current_sec = current_sec - 1;
+        }, 1000);
 
-        videoConnect(token);
-        process.env.REACT_APP_DISABLE_TWILIO_CONVERSATIONS !== 'true' && chatConnect(token);
-
-      } else {
-        const errorMessage = getErrorMessage(json.error?.message || res.statusText);
-        onError(new Error(errorMessage));
       }
+
+      videoConnect(token);
+      process.env.REACT_APP_DISABLE_TWILIO_CONVERSATIONS !== 'true' && chatConnect(token);
+
+
     });
   };
 

@@ -81,7 +81,7 @@ export default function usePasscodeAuth() {
         .then(res => res.json())
         .then(res => {
           setRoomType(res.room_type);
-          return res.token as string;
+          return res;
         });
     },
     [user]
