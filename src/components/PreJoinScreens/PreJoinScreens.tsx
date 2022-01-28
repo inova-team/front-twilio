@@ -49,7 +49,8 @@ export default function PreJoinScreens() {
       setStep(Steps.deviceSelectionStep);
       let logo = document.querySelector('.main-page-logo');
       if (logo){
-        logo.setAttribute('href', process.env.REACT_APP_MAIN_PAGE_PATH || '#')
+        // logo.setAttribute('href', process.env.REACT_APP_MAIN_PAGE_PATH || '#')
+        logo.setAttribute('href', 'https://tinkkuweb.uc.r.appspot.com/' || '#')
       }
     }
   }, [user, URLRoomName, URLUsername]);

@@ -14,7 +14,8 @@ export default function useHandleRoomDisconnection(
   useEffect(() => {
     if (room) {
       let room_sid = room.sid
-      let endpoint = process.env.REACT_APP_DISCONNECT_PATH || ''
+      // let endpoint = process.env.REACT_APP_DISCONNECT_PATH || ''
+      let endpoint = 'https://tinkkuweb.uc.r.appspot.com//llamadas/disconnect' || ''
       const onDisconnected = (_: Room, error: TwilioError) => {
         if (error) {
           onError(error);

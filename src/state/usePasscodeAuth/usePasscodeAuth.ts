@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RoomType } from '../../types';
 
-const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/call/token';
+// const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/call/token';
+const endpoint = 'https://http://tinkkuweb.uc.r.appspot.com/llamadas/token' || '/call/token';
 
 export function getPasscode() {
   // const match = window.location.search.match(/passcode=(.*)&?/);
