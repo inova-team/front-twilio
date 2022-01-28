@@ -4,7 +4,6 @@ import { TwilioError } from 'twilio-video';
 import { settingsReducer, initialSettings, Settings, SettingsAction } from './settings/settingsReducer';
 import useActiveSinkId from './useActiveSinkId/useActiveSinkId';
 import useFirebaseAuth from './useFirebaseAuth/useFirebaseAuth';
-import usePasscodeAuth from './usePasscodeAuth/usePasscodeAuth';
 import { User } from 'firebase';
 
 export interface StateContextType {
@@ -55,16 +54,11 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       ...contextValue,
       ...useFirebaseAuth(), // eslint-disable-line react-hooks/rules-of-hooks
     };
-  } else if (process.env.REACT_APP_SET_AUTH === 'passcode') {
-    contextValue = {
-      ...contextValue,
-      ...usePasscodeAuth(), // eslint-disable-line react-hooks/rules-of-hooks
-    };
   } else {
     contextValue = {
       ...contextValue,
       getToken: async (user_identity, room_name, usr_tkn) => {
-        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
+        const endpoint = 'https://tinkkuweb.uc.r.appspot.com/llamadas/token' || '/token';
 
         return fetch(endpoint, {
           method: 'POST',

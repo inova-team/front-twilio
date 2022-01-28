@@ -85,7 +85,7 @@ export default function DeviceSelectionScreen({
         setName(json.name)
         setRoomName(json.room_name)
         // let endpoint = process.env.REACT_APP_DISCONNECT_PATH || ''
-        let endpoint = 'https://tinkkuweb.uc.r.appspot.com//llamadas/disconnect' || ''
+        let endpoint = 'https://tinkkuweb.uc.r.appspot.com/llamadas/disconnect' || ''
 
         if (json.client === 'paciente') {
           var current_sec = json.seconds

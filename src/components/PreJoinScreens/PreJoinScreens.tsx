@@ -50,7 +50,7 @@ export default function PreJoinScreens() {
       let logo = document.querySelector('.main-page-logo');
       if (logo){
         // logo.setAttribute('href', process.env.REACT_APP_MAIN_PAGE_PATH || '#')
-        logo.setAttribute('href', 'https://tinkkuweb.uc.r.appspot.com/' || '#')
+        logo.setAttribute('href', 'https://tinkkuweb.uc.r.appspot.com')
       }
     }
   }, [user, URLRoomName, URLUsername]);
