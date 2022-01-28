@@ -79,8 +79,9 @@ export default function DeviceSelectionScreen({
 
   const handleJoin = () => {
     getToken(name, roomName, usrTkn).then(async res => {
-      const json = await res.json();
       console.log(res)
+
+      const json = await res.json();
       if (res.ok) {
         let token = json.token
         setName(json.name)
