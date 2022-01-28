@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { makeStyles, Typography, Button, MenuItem, Link } from '@material-ui/core';
+import { makeStyles, Typography, Button, MenuItem } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useAppState } from '../../../state';
 import UserAvatar from './UserAvatar/UserAvatar';
@@ -38,7 +38,7 @@ const UserMenu: React.FC = () => {
     signOut?.();
   }, [localTracks, signOut]);
 
-  if (process.env.REACT_APP_SET_AUTH === 'passcode') {
+  /*if (process.env.REACT_APP_SET_AUTH === 'passcode') {
     return (
       <div className={classes.userContainer}>
         <Link onClick={handleSignOut} className={classes.logoutLink}>
@@ -46,7 +46,7 @@ const UserMenu: React.FC = () => {
         </Link>
       </div>
     );
-  }
+  }*/
 
   if (process.env.REACT_APP_SET_AUTH === 'firebase') {
     return (
