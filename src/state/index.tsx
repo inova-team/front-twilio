@@ -3,8 +3,8 @@ import { RoomType } from '../types';
 import { TwilioError } from 'twilio-video';
 import { settingsReducer, initialSettings, Settings, SettingsAction } from './settings/settingsReducer';
 import useActiveSinkId from './useActiveSinkId/useActiveSinkId';
-import useFirebaseAuth from './useFirebaseAuth/useFirebaseAuth';
-import usePasscodeAuth from './usePasscodeAuth/usePasscodeAuth';
+// import useFirebaseAuth from './useFirebaseAuth/useFirebaseAuth';
+// import usePasscodeAuth from './usePasscodeAuth/usePasscodeAuth';
 import { User } from 'firebase';
 
 export interface StateContextType {
@@ -50,7 +50,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     dispatchSetting,
   } as StateContextType;
 
-  if (process.env.REACT_APP_SET_AUTH === 'firebase') {
+  /*if (process.env.REACT_APP_SET_AUTH === 'firebase') {
     contextValue = {
       ...contextValue,
       ...useFirebaseAuth(), // eslint-disable-line react-hooks/rules-of-hooks
@@ -61,29 +61,31 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
       ...usePasscodeAuth(), // eslint-disable-line react-hooks/rules-of-hooks
     };
   } else {
-    contextValue = {
-      ...contextValue,
-      getToken: async (user_identity, room_name, usr_tkn) => {
-        const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
 
-        return fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-          },
-          body: JSON.stringify({
-            user_identity,
-            usr_tkn: usr_tkn,
-            create_conversation: process.env.REACT_APP_DISABLE_TWILIO_CONVERSATIONS !== 'true',
-          }),
-        })
-          // .then(res => res.json())
-          .then(res => {
-            return res
-          });
-      },
-    };
-  }
+  }*/
+  contextValue = {
+    ...contextValue,
+    getToken: async (user_identity, room_name, usr_tkn) => {
+      // const endpoint = process.env.REACT_APP_TOKEN_ENDPOINT || '/token';
+      const endpoint = 'https://tinkkuweb.uc.r.appspot.com/llamadas/token' || '/token';
+
+      return fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_identity,
+          usr_tkn: usr_tkn,
+          create_conversation: process.env.REACT_APP_DISABLE_TWILIO_CONVERSATIONS !== 'true',
+        }),
+      })
+        // .then(res => res.json())
+        .then(res => {
+          return res
+        });
+    },
+  };
 
   const getToken: StateContextType['getToken'] = (name, room, usr_tkn) => {
     setIsFetching(true);
