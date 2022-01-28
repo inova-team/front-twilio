@@ -8,7 +8,8 @@ const endpoint = 'https://tinkkuweb.uc.r.appspot.com/llamadas/token' || '/call/t
 export function getPasscode() {
   // const match = window.location.search.match(/passcode=(.*)&?/);
   // const passcode = match ? match[1] : window.sessionStorage.getItem('passcode');
-  return 'inovateam';
+  const variablesURL = new URLSearchParams(window.location.search);
+  return variablesURL.get('pwd')!.toString();
 }
 
 export function fetchToken(
