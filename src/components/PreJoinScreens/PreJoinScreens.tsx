@@ -47,11 +47,12 @@ export default function PreJoinScreens() {
       setName(nombre);
       setUserTkn(pwd);
       setStep(Steps.deviceSelectionStep);
-      let logo = document.querySelector('.main-page-logo');
-      if (logo){
-        // logo.setAttribute('href', process.env.REACT_APP_MAIN_PAGE_PATH || '#')
-        logo.setAttribute('href', 'https://tinkkuweb.uc.r.appspot.com')
-      }
+    }
+    let logo = document.querySelector('.main-page-logo');
+    console.log(logo)
+    if (logo){
+      // logo.setAttribute('href', process.env.REACT_APP_MAIN_PAGE_PATH || '#')
+      logo.setAttribute('href', 'https://tinkkuweb.uc.r.appspot.com')
     }
   }, [user, URLRoomName, URLUsername]);
 

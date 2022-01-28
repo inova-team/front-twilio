@@ -4,6 +4,7 @@ import { TwilioError } from 'twilio-video';
 import { settingsReducer, initialSettings, Settings, SettingsAction } from './settings/settingsReducer';
 import useActiveSinkId from './useActiveSinkId/useActiveSinkId';
 import useFirebaseAuth from './useFirebaseAuth/useFirebaseAuth';
+import usePasscodeAuth from './usePasscodeAuth/usePasscodeAuth';
 import { User } from 'firebase';
 
 export interface StateContextType {
@@ -49,6 +50,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     dispatchSetting,
   } as StateContextType;
 
+  console.log(process.env)
   if (process.env.REACT_APP_SET_AUTH === 'firebase') {
     contextValue = {
       ...contextValue,
